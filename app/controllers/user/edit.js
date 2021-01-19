@@ -14,14 +14,14 @@ module.exports = {
     UpdateUser: (req, res) =>{     
         var errors = [],
             {
-                work, certifications
+                phone
             }      = req.body;
         bcrypt.genSalt(10, (e, salt) => {
             bcrypt.hash(phone, salt, (err, hash) => {
                 if(err){
                     errors.push({ msg: err.message });
                 }
-                User.findByIdAndUpdate(req.params.id , {
+                User.updateOne({ _id: req.params.id } , {
                     name: req.body.name,
                     address: req.body.address,
                     email: req.body.email,
@@ -30,8 +30,8 @@ module.exports = {
                     school: req.body.school,
                     gov: req.body.gov,
                     grade: req.body.grade,
-                    certifications: certifications,
-                    work: work,
+                    certifications: req.body.certifications,
+                    work: req.body.work,
                     birthdate: req.body.birthdate
                 }).then(updatedUser => {
                     req.flash(

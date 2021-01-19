@@ -19,7 +19,7 @@ router.get('/users/get', parseUrlencoded, authentication.isLoggedIn,
 router.get('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                            signincontroller.GetSignInPage);
 router.post('/user/signup', parseUrlencoded, authentication.isLoggedIn,
-                                             authorization.checkAdminOwnership,
+                                             authorization.checkInstituteOwnership,
                                              signupcontroller.PostSignUpPage);
 router.post('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                             signincontroller.PostSignInPage);
@@ -31,9 +31,10 @@ router.get('/user/:id/edit', parseUrlencoded, authentication.isLoggedIn,
 router.put('/user/:id/edit', parseUrlencoded, authentication.isLoggedIn,
                                               authorization.checkUserOwnership,
                                               editusercontroller.UpdateUser);
-router.delete('/user/:id/delete', parseUrlencoded, authentication.isLoggedIn,
-                                                   authorization.checkAdminOwnership,
-                                                   editusercontroller.DeleteUser);
+router.delete('/user/:id/delete', parseUrlencoded,
+                                  authentication.isLoggedIn,
+                                  authorization.checkInstituteOwnership,
+                                  editusercontroller.DeleteUser);
 router.get('/user/:id/logout', parseUrlencoded, authentication.isLoggedIn,
                                                 authentication.logout);
 module.exports = router;
