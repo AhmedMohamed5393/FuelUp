@@ -18,7 +18,8 @@ router.get('/users/get', parseUrlencoded, authentication.isLoggedIn,
                                           getusercontroller.getUsers);
 router.get('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                            signincontroller.GetSignInPage);
-router.post('/user/signup', parseUrlencoded, authentication.notLoggedIn,
+router.post('/user/signup', parseUrlencoded, authentication.isLoggedIn,
+                                             authorization.checkAdminOwnership,
                                              signupcontroller.PostSignUpPage);
 router.post('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                             signincontroller.PostSignInPage);
@@ -31,7 +32,7 @@ router.put('/user/:id/edit', parseUrlencoded, authentication.isLoggedIn,
                                               authorization.checkUserOwnership,
                                               editusercontroller.UpdateUser);
 router.delete('/user/:id/delete', parseUrlencoded, authentication.isLoggedIn,
-                                                   authorization.checkUserOwnership,
+                                                   authorization.checkAdminOwnership,
                                                    editusercontroller.DeleteUser);
 router.get('/user/:id/logout', parseUrlencoded, authentication.isLoggedIn,
                                                 authentication.logout);
