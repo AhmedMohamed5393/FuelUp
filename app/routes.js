@@ -19,7 +19,7 @@ router.get('/users/get', parseUrlencoded, authentication.isLoggedIn,
 router.get('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                            signincontroller.GetSignInPage);
 router.post('/user/signup', parseUrlencoded, authentication.isLoggedIn,
-                                             authorization.checkInstituteOwnership,
+                                            //  authorization.checkInstituteOwnership,
                                              signupcontroller.PostSignUpPage);
 router.post('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                             signincontroller.PostSignInPage);
