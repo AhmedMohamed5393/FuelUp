@@ -8,9 +8,9 @@ module.exports = {
         });
     },
     PostSignUpPage: (req, res) => {
-        const { name, phone, target } = req.body;
+        const { name, phone, role } = req.body;
         let errors = [];
-        if (!name || !phone || !target) {
+        if (!name || !phone || !role) {
           errors.push({ msg: 'Please enter all fields' });
         }
         if(phone.length != 12 || isNaN(parseFloat(phone))){
@@ -22,7 +22,7 @@ module.exports = {
         } else {
           var newuser = new User({
                   name: name,
-                  target: target,
+                  role: role,
                   phone: phone,
                   startdate: Date.now()
               });

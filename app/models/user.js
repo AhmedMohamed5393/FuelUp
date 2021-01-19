@@ -9,7 +9,7 @@ var mongoose              = require('mongoose'),
         },
         email: {
             type: String,
-            unique: false,
+            unique: true,
             required: false
         },
         address: String,
@@ -22,14 +22,8 @@ var mongoose              = require('mongoose'),
             type: String,
             required: true
         },
-        school: {
-            type: String,
-            required: true
-        },
-        gov: {
-            type: String,
-            required: true
-        },
+        school: String,
+        gov: String,
         grade: Number,
         certifications: [{
             institute: String,
