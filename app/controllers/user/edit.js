@@ -31,7 +31,8 @@ module.exports = {
                     gov: req.body.gov,
                     grade: req.body.grade,
                     certifications: certifications,
-                    work: work
+                    work: work,
+                    birthdate: req.body.birthdate
                 }).then(updatedUser => {
                     req.flash(
                         'success_msg',

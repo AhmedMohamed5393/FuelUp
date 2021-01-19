@@ -36,6 +36,7 @@ var mongoose              = require('mongoose'),
             company: String,
             experience: Number
         }],
+        birthdate: Date,
         startdate: {
             type: Date,
             required: true

@@ -24,6 +24,12 @@ module.exports = {
                   name: name,
                   role: role,
                   phone: phone,
+                  address: null,
+                  email: null,
+                  school: null,
+                  gov: null,
+                  grade: null,
+                  birthdate: null,
                   startdate: Date.now()
               });
           User.findOne({ name: name }).then(user => {
