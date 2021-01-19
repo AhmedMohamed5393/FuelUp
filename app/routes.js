@@ -18,7 +18,8 @@ router.get('/users/get', parseUrlencoded, authentication.isLoggedIn,
                                           getusercontroller.getUsers);
 router.get('/user/login', parseUrlencoded, authentication.notLoggedIn,
                                            signincontroller.GetSignInPage);
-router.post('/user/signup', parseUrlencoded, authentication.isLoggedIn,
+router.post('/user/signup', parseUrlencoded, 
+                                            // authentication.isLoggedIn,
                                             //  authorization.checkInstituteOwnership,
                                              signupcontroller.PostSignUpPage);
 router.post('/user/login', parseUrlencoded, authentication.notLoggedIn,
