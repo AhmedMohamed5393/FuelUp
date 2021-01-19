@@ -12,7 +12,10 @@ module.exports = {
         });
     },
     UpdateUser: (req, res) =>{     
-        var errors = [];
+        var errors = [],
+            {
+                work, certifications
+            }      = req.body;
         bcrypt.genSalt(10, (e, salt) => {
             bcrypt.hash(phone, salt, (err, hash) => {
                 if(err){
@@ -27,8 +30,8 @@ module.exports = {
                     school: req.body.school,
                     gov: req.body.gov,
                     grade: req.body.grade,
-                    certifications: req.body.certifications,
-                    work: req.body.work
+                    certifications: certifications,
+                    work: work
                 }).then(updatedUser => {
                     req.flash(
                         'success_msg',
